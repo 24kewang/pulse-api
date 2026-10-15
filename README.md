@@ -1,6 +1,6 @@
 # pulse-api
 
-Backend API for the Pulse club website: an Express 5 app with Supabase providing Postgres and auth, deployed to Vercel automatically by CI.
+Backend API for the Pulse website: an Express 5 app with Supabase providing Postgres and auth, deployed to Vercel automatically by CI.
 
 - **Validation, types and docs** all come from [zod](https://zod.dev) schemas. Each endpoint is declared once with `specification()`.
 - **Auth:** the frontend logs in with Supabase and sends the access token. The API verifies it and checks roles.
