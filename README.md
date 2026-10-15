@@ -6,7 +6,6 @@ Backend API for the Pulse club website: an Express 5 app with Supabase providing
 - **Auth:** the frontend logs in with Supabase and sends the access token. The API verifies it and checks roles.
 - **You only need Node and Git.** No Vercel account or CLI is needed: open a PR and CI tests it, then deploys a preview.
 
-
 ## Getting started
 
 Requires Node 20+ (CI uses 24).
