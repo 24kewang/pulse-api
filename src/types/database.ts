@@ -43,8 +43,8 @@ export type Database = {
                     website_url?: string | null;
                     description?: string | null;
                     created_at?: string;
-                }
-            }
+                };
+            };
         };
         Views: { [_ in never]: never };
         Functions: { [_ in never]: never };
