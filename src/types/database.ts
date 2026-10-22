@@ -27,6 +27,24 @@ export type Database = {
                 Update: Partial<Database["public"]["Tables"]["events"]["Insert"]>;
                 Relationships: [];
             };
+            sponsors: {
+                Row: {
+                    id: string;
+                    name: string;
+                    logo_url: string | null;
+                    website_url: string | null;
+                    description: string | null;
+                    created_at: string;
+                };
+                Insert: {
+                    id?: string;
+                    name: string;
+                    logo_url?: string | null;
+                    website_url?: string | null;
+                    description?: string | null;
+                    created_at?: string;
+                }
+            }
         };
         Views: { [_ in never]: never };
         Functions: { [_ in never]: never };
