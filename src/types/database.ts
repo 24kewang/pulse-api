@@ -12,7 +12,7 @@ export type Database = {
                     description: string | null;
                     location: string | null;
                     start_time: string;
-                    end_time: string | null;
+                    end_time: string;
                     created_at: string;
                 };
                 Insert: {
@@ -21,7 +21,7 @@ export type Database = {
                     description?: string | null;
                     location?: string | null;
                     start_time: string;
-                    end_time?: string | null;
+                    end_time: string;
                     created_at?: string;
                 };
                 Update: Partial<Database["public"]["Tables"]["events"]["Insert"]>;
