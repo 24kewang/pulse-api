@@ -1,6 +1,7 @@
 // This file should be auto-generated. Ask API owner to regenerate it if it is out of date.
 //   npx supabase gen types typescript --project-id <your-project-id> > src/types/database.ts
-// This hand-written version mirrors supabase/migrations/0001_create_events.sql so the template compiles.
+// This hand-written version mirrors supabase/migrations/0001_create_events.sql and
+// 0003_create_team.sql so the template compiles.
 
 export type Database = {
     public: {
@@ -27,6 +28,17 @@ export type Database = {
                 Update: Partial<Database["public"]["Tables"]["events"]["Insert"]>;
                 Relationships: [];
             };
+            team_members: {
+                Row: {
+                    id: string;
+                    name: string;
+                    position: string;
+                    team: string;
+                    academic_year: string;
+                    image_url: string | null;
+                    linkedin_url: string | null;
+                    email: string | null;
+                    display_order: number;
             sponsors: {
                 Row: {
                     id: string;
@@ -39,11 +51,17 @@ export type Database = {
                 Insert: {
                     id?: string;
                     name: string;
-                    logo_url?: string | null;
-                    website_url?: string | null;
-                    description?: string | null;
+                    position: string;
+                    team: string;
+                    academic_year: string;
+                    image_url?: string | null;
+                    linkedin_url?: string | null;
+                    email?: string | null;
+                    display_order?: number;
                     created_at?: string;
                 };
+                Update: Partial<Database["public"]["Tables"]["team_members"]["Insert"]>;
+                Relationships: [];
             };
         };
         Views: { [_ in never]: never };
