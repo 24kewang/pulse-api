@@ -9,7 +9,7 @@ describe("toEvent()", () => {
             description: null,
             location: "Room 101",
             start_time: "2026-10-15T18:00:00+00:00",
-            end_time: null,
+            end_time: "2026-11-15T18:00:00+00:00",
             created_at: "2026-10-01T00:00:00+00:00",
         });
 
@@ -19,7 +19,7 @@ describe("toEvent()", () => {
             description: null,
             location: "Room 101",
             startTime: "2026-10-15T18:00:00+00:00",
-            endTime: null,
+            endTime: "2026-11-15T18:00:00+00:00",
         });
     });
 });

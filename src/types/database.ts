@@ -13,7 +13,7 @@ export type Database = {
                     description: string | null;
                     location: string | null;
                     start_time: string;
-                    end_time: string | null;
+                    end_time: string;
                     created_at: string;
                 };
                 Insert: {
@@ -22,7 +22,7 @@ export type Database = {
                     description?: string | null;
                     location?: string | null;
                     start_time: string;
-                    end_time?: string | null;
+                    end_time: string;
                     created_at?: string;
                 };
                 Update: Partial<Database["public"]["Tables"]["events"]["Insert"]>;
@@ -39,6 +39,13 @@ export type Database = {
                     linkedin_url: string | null;
                     email: string | null;
                     display_order: number;
+            sponsors: {
+                Row: {
+                    id: string;
+                    name: string;
+                    logo_url: string | null;
+                    website_url: string | null;
+                    description: string | null;
                     created_at: string;
                 };
                 Insert: {
