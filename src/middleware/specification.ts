@@ -9,6 +9,7 @@ import { bearerAuth, Registry } from "../common/openapi";
 // TODO(you): add a tag per service; it groups endpoints in the generated docs.
 export enum Tag {
     EVENTS = "Events",
+    TEAM = "Team",
 }
 
 export interface ResponseObject {
