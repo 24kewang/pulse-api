@@ -12,6 +12,7 @@ export function toTeamMember(row: TeamMemberRow): TeamMember {
         linkedinUrl: row.linkedin_url,
         email: row.email,
         displayOrder: row.display_order,
+        createdAt: row.created_at,
     };
 }
 

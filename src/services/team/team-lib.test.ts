@@ -30,6 +30,7 @@ describe("team data layer", () => {
             linkedinUrl: ROW.linkedin_url,
             email: ROW.email,
             displayOrder: ROW.display_order,
+            createdAt: ROW.created_at,
         });
     });
 
