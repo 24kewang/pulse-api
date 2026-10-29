@@ -10,6 +10,7 @@ const Config = {
     SUPABASE_URL: requireEnv("SUPABASE_URL"),
     SUPABASE_ANON_KEY: requireEnv("SUPABASE_ANON_KEY"),
     SUPABASE_SERVICE_ROLE_KEY: requireEnv("SUPABASE_SERVICE_ROLE_KEY"),
+    PAST_EVENT_PHOTOS_BUCKET: process.env.PAST_EVENT_PHOTOS_BUCKET?.trim() || "past-event-photos",
 
     PORT: process.env.PORT ? parseInt(process.env.PORT) : 3000,
 
