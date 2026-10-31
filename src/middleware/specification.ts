@@ -10,6 +10,7 @@ import { bearerAuth, Registry } from "../common/openapi";
 export enum Tag {
     EVENTS = "Events",
     PAST_EVENTS = "Past Events",
+    TEAM = "Team",
 }
 
 export interface ResponseObject {

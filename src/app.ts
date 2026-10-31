@@ -5,6 +5,7 @@ import { getOpenAPISpec } from "./common/openapi";
 import { ErrorHandler } from "./middleware/error-handler";
 import eventsRouter from "./services/events/events-router";
 import pastEventsRouter from "./services/past-events/past-events-router";
+import teamRouter from "./services/team/team-router";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.json({ limit: Config.MAX_REQUEST_SIZE }));
 // Routers: one per service
 app.use("/events/", eventsRouter);
 app.use("/past-events/", pastEventsRouter);
+app.use("/team", teamRouter);
 
 app.get("/docs/json", (_req: Request, res: Response) => {
     res.json(getOpenAPISpec());

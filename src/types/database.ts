@@ -111,6 +111,34 @@ export type Database = {
                 Update: Partial<Database["public"]["Tables"]["sponsors"]["Insert"]>;
                 Relationships: [];
             };
+            team_members: {
+                Row: {
+                    id: string;
+                    name: string;
+                    position: string;
+                    team: string;
+                    academic_year: string;
+                    image_url: string | null;
+                    linkedin_url: string | null;
+                    email: string | null;
+                    display_order: number;
+                    created_at: string;
+                };
+                Insert: {
+                    id?: string;
+                    name: string;
+                    position: string;
+                    team: string;
+                    academic_year: string;
+                    image_url?: string | null;
+                    linkedin_url?: string | null;
+                    email?: string | null;
+                    display_order?: number;
+                    created_at?: string;
+                };
+                Update: Partial<Database["public"]["Tables"]["team_members"]["Insert"]>;
+                Relationships: [];
+            };
         };
         Views: { [_ in never]: never };
         Functions: { [_ in never]: never };

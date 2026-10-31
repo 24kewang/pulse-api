@@ -12,6 +12,7 @@ describe("app", () => {
         const response = await request(app).get("/docs/json").expect(200);
         expect(Object.keys(response.body.paths)).toContain("/events/");
         expect(Object.keys(response.body.paths)).toContain("/past-events/");
+        expect(Object.keys(response.body.paths)).toContain("/team/");
     });
 
     it("returns a JSON 404 for unknown routes", async () => {

@@ -1,7 +1,6 @@
-import { NotImplementedError } from "../../common/errors";
+import { getAnonClient } from "../../common/supabase";
 import { Event, EventRow } from "./events-schemas";
 
-// TODO: map database columns (snake_case) to the API shape defined in EventSchema.
 export function toEvent(row: EventRow): Event {
     return {
         id: row.id,
@@ -13,11 +12,17 @@ export function toEvent(row: EventRow): Event {
     };
 }
 
-export async function listEvents(): Promise<Event[]> {
-    // TODO: create the events table (supabase/migrations), then replace the throw below with:
-    //   const { data, error } = await getAnonClient().from("events").select("*").order("start_time");
-    //   if (error) throw error;
-    //   return data.map(toEvent);
-    // (import getAnonClient from "../../common/supabase")
-    throw new NotImplementedError("Listing events");
+export async function listEvents(from?: string, to?: string): Promise<Event[]> {
+    let query = getAnonClient().from("events").select("*");
+    if (from) {
+        query = query.gte("start_time", from);
+    }
+    if (to) {
+        query = query.lt("start_time", to);
+    }
+    const { data, error } = await query.order("start_time");
+    if (error) {
+        throw error;
+    }
+    return data.map(toEvent);
 }
