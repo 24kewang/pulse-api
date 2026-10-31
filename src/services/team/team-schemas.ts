@@ -14,6 +14,7 @@ export const TeamMemberSchema = z
         linkedinUrl: z.string().url().nullable(),
         email: z.string().email().nullable(),
         displayOrder: z.number().int(),
+        createdAt: z.string().datetime(),
     })
     .openapi("TeamMember");
 

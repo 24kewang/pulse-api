@@ -20,6 +20,7 @@ const TEST_MEMBER: TeamMember = {
     linkedinUrl: "https://linkedin.com/in/alex",
     email: "alex@example.com",
     displayOrder: 1,
+    createdAt: "2025-08-01T00:00:00+00:00",
 };
 
 describe("GET /team/", () => {
