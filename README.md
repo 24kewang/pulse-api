@@ -161,7 +161,7 @@ You don't need access to the Supabase dashboard. Database changes go through you
    Never edit a migration that is already on `main`.
 2. Update `src/types/database.ts` by hand to match. Add the new columns to `Row`, `Insert` and `Update`.
 3. If the new table or column needs sample data, update `supabase/seed.sql`.
-4. Enable Row Level Security on any new table and add policies for who may read and write (see the existing migration).
+4. Enable Row Level Security on any new table and add policies for who may read and write. Also `grant` the table privileges those roles need, e.g. `grant select on public.<table> to anon, authenticated;`. A policy alone isn't enough: without the grant, every query fails with `permission denied for table` (see `0003_add_past_event_content.sql`).
 5. Add the **`needs migration`** label to the PR, or say so in the description. The owner applies it to pulse-dev so your preview works, then to production before merging.
 
 Until the owner has applied it to pulse-dev, `npm run dev` and the preview will error on the new columns. Your tests still pass because they mock the database.
