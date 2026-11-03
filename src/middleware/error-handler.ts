@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { randomUUID } from "crypto";
+import { inspect } from "util";
 import { APIError } from "../common/errors";
 
 function hasType(error: unknown, type: string): boolean {
@@ -21,7 +22,8 @@ export function ErrorHandler(error: unknown, req: Request, res: Response, _next:
     }
 
     const id = randomUUID();
-    const detail = error instanceof Error ? error.stack : String(error);
+    // Supabase returns plain error objects (not Error instances), so inspect them instead of String()-ing them
+    const detail = error instanceof Error ? error.stack : inspect(error, { depth: 5 });
     console.error(`ERROR ${id} - ${req.method} ${req.path}:\n${detail}`);
     res.status(500).json({ error: "InternalError", message: `Something went wrong. Id: ${id}`, id });
 }
