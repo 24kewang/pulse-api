@@ -99,6 +99,7 @@ export type Database = {
                     website_url: string | null;
                     description: string | null;
                     created_at: string;
+                    year: number | null;
                 };
                 Insert: {
                     id?: string;
@@ -107,6 +108,7 @@ export type Database = {
                     website_url?: string | null;
                     description?: string | null;
                     created_at?: string;
+                    year?: number | null;
                 };
                 Update: Partial<Database["public"]["Tables"]["sponsors"]["Insert"]>;
                 Relationships: [];

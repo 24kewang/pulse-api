@@ -11,6 +11,7 @@ export enum Tag {
     EVENTS = "Events",
     PAST_EVENTS = "Past Events",
     TEAM = "Team",
+    SPONSORS = "Sponsors",
 }
 
 export interface ResponseObject {
