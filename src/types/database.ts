@@ -95,7 +95,7 @@ export type Database = {
                 Row: {
                     id: string;
                     name: string;
-                    logo_url: string | null;
+                    logo_path: string | null;
                     website_url: string | null;
                     description: string | null;
                     created_at: string;
@@ -103,7 +103,7 @@ export type Database = {
                 Insert: {
                     id?: string;
                     name: string;
-                    logo_url?: string | null;
+                    logo_path?: string | null;
                     website_url?: string | null;
                     description?: string | null;
                     created_at?: string;
@@ -118,7 +118,7 @@ export type Database = {
                     position: string;
                     team: string;
                     academic_year: string;
-                    image_url: string | null;
+                    image_path: string | null;
                     linkedin_url: string | null;
                     email: string | null;
                     display_order: number;
@@ -130,7 +130,7 @@ export type Database = {
                     position: string;
                     team: string;
                     academic_year: string;
-                    image_url?: string | null;
+                    image_path?: string | null;
                     linkedin_url?: string | null;
                     email?: string | null;
                     display_order?: number;

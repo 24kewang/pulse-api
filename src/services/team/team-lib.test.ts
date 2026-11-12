@@ -1,9 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
+import { createClient } from "@supabase/supabase-js";
 import { getAnonClient } from "../../common/supabase";
 import { listTeamMembers, toTeamMember } from "./team-lib";
+import { Database } from "../../types/database";
 import { TeamMemberRow } from "./team-schemas";
 
 vi.mock("../../common/supabase", () => ({ getAnonClient: vi.fn() }));
+
+// A real client: getPublicUrl only builds a URL string, no network call
+const CLIENT = createClient<Database>("http://localhost:54321", "test-anon-key");
 
 const ROW: TeamMemberRow = {
     id: "3f1c2a9e-5b7d-4c8e-9a1f-2d3e4f5a6b7c",
@@ -11,7 +16,7 @@ const ROW: TeamMemberRow = {
     position: "Co-Director",
     team: "Directors",
     academic_year: "2025-26",
-    image_url: "https://example.com/alex.jpg",
+    image_path: "2025-26/alex.jpg",
     linkedin_url: "https://linkedin.com/in/alex",
     email: "alex@example.com",
     display_order: 1,
@@ -20,18 +25,22 @@ const ROW: TeamMemberRow = {
 
 describe("team data layer", () => {
     it("maps database fields to the public API shape", () => {
-        expect(toTeamMember(ROW)).toEqual({
+        expect(toTeamMember(ROW, CLIENT)).toEqual({
             id: ROW.id,
             name: ROW.name,
             position: ROW.position,
             committee: ROW.team,
             year: ROW.academic_year,
-            imageUrl: ROW.image_url,
+            imageUrl: "http://localhost:54321/storage/v1/object/public/team-photos/2025-26/alex.jpg",
             linkedinUrl: ROW.linkedin_url,
             email: ROW.email,
             displayOrder: ROW.display_order,
             createdAt: ROW.created_at,
         });
+    });
+
+    it("returns null when a member has no photo", () => {
+        expect(toTeamMember({ ...ROW, image_path: null }, CLIENT).imageUrl).toBeNull();
     });
 
     it("applies committee and year filters", async () => {
@@ -45,6 +54,7 @@ describe("team data layer", () => {
         };
         vi.mocked(getAnonClient).mockReturnValue({
             from: vi.fn().mockReturnValue(request),
+            storage: CLIENT.storage,
         } as never);
 
         await listTeamMembers({ committee: "Directors", year: "2025-26" });
