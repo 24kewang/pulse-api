@@ -141,10 +141,6 @@ export type Database = {
                 Update: Partial<Database["public"]["Tables"]["team_members"]["Insert"]>;
                 Relationships: [];
             };
-=======
-                }
-            }
->>>>>>> Stashed changes
         };
         Views: { [_ in never]: never };
         Functions: { [_ in never]: never };
