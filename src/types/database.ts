@@ -90,7 +90,7 @@ export type Database = {
                 };
                 Update: Partial<Database["public"]["Tables"]["events"]["Insert"]>;
                 Relationships: [];
-            };
+            };         
             sponsors: {
                 Row: {
                     id: string;
@@ -99,6 +99,7 @@ export type Database = {
                     website_url: string | null;
                     description: string | null;
                     created_at: string;
+                    year: number | null;
                 };
                 Insert: {
                     id?: string;
@@ -107,6 +108,7 @@ export type Database = {
                     website_url?: string | null;
                     description?: string | null;
                     created_at?: string;
+                    year?: number | null;
                 };
                 Update: Partial<Database["public"]["Tables"]["sponsors"]["Insert"]>;
                 Relationships: [];
@@ -139,6 +141,10 @@ export type Database = {
                 Update: Partial<Database["public"]["Tables"]["team_members"]["Insert"]>;
                 Relationships: [];
             };
+=======
+                }
+            }
+>>>>>>> Stashed changes
         };
         Views: { [_ in never]: never };
         Functions: { [_ in never]: never };
