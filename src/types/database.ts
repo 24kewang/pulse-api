@@ -90,7 +90,7 @@ export type Database = {
                 };
                 Update: Partial<Database["public"]["Tables"]["events"]["Insert"]>;
                 Relationships: [];
-            };         
+            };
             sponsors: {
                 Row: {
                     id: string;
