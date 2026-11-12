@@ -11,6 +11,8 @@ const Config = {
     SUPABASE_ANON_KEY: requireEnv("SUPABASE_ANON_KEY"),
     SUPABASE_SERVICE_ROLE_KEY: requireEnv("SUPABASE_SERVICE_ROLE_KEY"),
     PAST_EVENT_PHOTOS_BUCKET: process.env.PAST_EVENT_PHOTOS_BUCKET?.trim() || "past-event-photos",
+    TEAM_PHOTOS_BUCKET: process.env.TEAM_PHOTOS_BUCKET?.trim() || "team-photos",
+    SPONSOR_LOGOS_BUCKET: process.env.SPONSOR_LOGOS_BUCKET?.trim() || "sponsor-logos",
 
     PORT: process.env.PORT ? parseInt(process.env.PORT) : 3000,
 

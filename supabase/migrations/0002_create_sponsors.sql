@@ -5,7 +5,7 @@ CREATE TABLE public.sponsors (
     website_url TEXT,
     description TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-)
+);
 
 ALTER TABLE public.sponsors
 ENABLE ROW LEVEL SECURITY;
