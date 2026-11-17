@@ -1,14 +1,17 @@
-import { getAnonClient } from "../../common/supabase";
+import Config from "../../common/config";
+import { getAnonClient, Supabase } from "../../common/supabase";
 import { TeamMember, TeamMemberRow, TeamQuery } from "./team-schemas";
 
-export function toTeamMember(row: TeamMemberRow): TeamMember {
+export function toTeamMember(row: TeamMemberRow, client: Supabase): TeamMember {
     return {
         id: row.id,
         name: row.name,
         position: row.position,
         committee: row.team,
         year: row.academic_year,
-        imageUrl: row.image_url,
+        imageUrl: row.image_path
+            ? client.storage.from(Config.TEAM_PHOTOS_BUCKET).getPublicUrl(row.image_path).data.publicUrl
+            : null,
         linkedinUrl: row.linkedin_url,
         email: row.email,
         displayOrder: row.display_order,
@@ -17,7 +20,8 @@ export function toTeamMember(row: TeamMemberRow): TeamMember {
 }
 
 export async function listTeamMembers(query: TeamQuery = {}): Promise<TeamMember[]> {
-    let request = getAnonClient().from("team_members").select("*").order("team").order("display_order").order("name");
+    const client = getAnonClient();
+    let request = client.from("team_members").select("*").order("team").order("display_order").order("name");
 
     if (query.committee) {
         request = request.eq("team", query.committee);
@@ -31,5 +35,5 @@ export async function listTeamMembers(query: TeamQuery = {}): Promise<TeamMember
         throw error;
     }
 
-    return data.map(toTeamMember);
+    return data.map((row) => toTeamMember(row, client));
 }
