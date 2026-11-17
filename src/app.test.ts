@@ -19,4 +19,10 @@ describe("app", () => {
         const response = await request(app).get("/nope").expect(404);
         expect(response.body).toMatchObject({ error: "EndpointNotFound" });
     });
+
+    it("returns HTML for /docs", async () => {
+        const response = await request(app).get("/docs").expect(200);
+        expect(response.type).toBe("text/html");
+        expect(response.text).toContain('url: "/docs/json"');
+    });
 });
