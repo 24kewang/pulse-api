@@ -7,6 +7,7 @@ import eventsRouter from "./services/events/events-router";
 import pastEventsRouter from "./services/past-events/past-events-router";
 import teamRouter from "./services/team/team-router";
 import sponsorsRouter from "./services/sponsors/sponsors-router";
+import { DOCS_PAGE } from "./common/docs-page";
 
 const app = express();
 
@@ -23,6 +24,10 @@ app.use("/events/", eventsRouter);
 app.use("/past-events/", pastEventsRouter);
 app.use("/team", teamRouter);
 app.use("/sponsors/", sponsorsRouter);
+
+app.get(["/docs", "/docs/"], (_req: Request, res: Response) => {
+    res.type("html").send(DOCS_PAGE);
+});
 
 app.get("/docs/json", (_req: Request, res: Response) => {
     res.json(getOpenAPISpec());

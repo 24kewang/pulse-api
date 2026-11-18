@@ -3,7 +3,7 @@ insert into public.team_members (
     position,
     team,
     academic_year,
-    image_url,
+    image_path,
     linkedin_url,
     email,
     display_order
